@@ -45,7 +45,7 @@ class App extends React.Component {
         return data;
       })
       .then(data => data.find(item => item.name === this.state.rocket))
-      .then(rocketFeatures => this.setState({ rocketFeatures })); // == .then(features => this.setState({rocketFeatures: features}))
+      .then(rocketFeatures => this.setState({ rocketFeatures })); // == .then(features => this.setState({rocketFeatures: features}))      
   }
 
   cangeRocket = (rocket) => {
@@ -57,7 +57,7 @@ class App extends React.Component {
       <React.Fragment>
         <Header rockets={this.state.rockets} cangeRocket={this.cangeRocket}/>
         <Main rocket={this.state.rocket} />
-        <Features />
+        <Features rocketFeatures={this.state.rocketFeatures}/>
         <Footer />
       </React.Fragment>
     );
