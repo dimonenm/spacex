@@ -66,7 +66,7 @@ class App extends React.Component {
         <Header rockets={this.state.rockets} cangeRocket={this.cangeRocket}/>
         <Main rocket={this.state.rocket} />
         {this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />}
-        {this.state.company && <Footer {...this.state.company.links} />}
+        {this.state.company && <Footer {...this.state.company} />}
       </React.Fragment>
     );
   }

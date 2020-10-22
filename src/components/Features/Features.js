@@ -2,7 +2,9 @@ import React from 'react';
 import RellaxWrapper from 'react-rellax-wrapper';
 import './features.css';
 
-const Features = (props) => {
+// const Features = (props) => {
+const Features = ({ name, height: { meters: hMeters, feet: hFeet }, diameter: { meters: dMeters, feet: dFeet },
+    mass: { kg: massKg, lb: massLb }, payload_weights, description }) => {
 
     const rocketImages = {
         'Falcon 1': 'falcon-1',
@@ -10,15 +12,6 @@ const Features = (props) => {
         'Falcon Heavy': 'falcon-heavy',
         'Starship': 'starship',
     }
-
-    const { name, description } = props;
-    let { height, diameter, mass, payload_weights } = props;
-    height = { ...height };
-    diameter = { ...diameter };
-    mass = { ...mass };
-    payload_weights = { ...payload_weights };
-    payload_weights = payload_weights[0];
-    payload_weights = { ...payload_weights };
 
     return (
         <section className="features">
@@ -33,20 +26,25 @@ const Features = (props) => {
                     <thead>
                         <tr>
                             <td className="table-column">HEIGHT</td>
-                            <td className="table-column">{height.meters} m / {height.feet} ft</td>
+                            <td className="table-column">{hMeters} m / {hFeet} ft</td>
                         </tr>
                         <tr>
                             <td className="table-column">DIAMETER</td>
-                            <td className="table-column">{diameter.meters} m / {diameter.feet} ft</td>
+                            <td className="table-column">{dMeters} m / {dFeet} ft</td>
                         </tr>
                         <tr>
                             <td className="table-column">MASS</td>
-                            <td className="table-column">{mass.kg} kg / {mass.lb} lb</td>
+                            <td className="table-column">{massKg} kg / {massLb} lb</td>
                         </tr>
-                        <tr>
-                            <td className="table-column">PAYLOAD TO LEO</td>
-                            <td className="table-column">{payload_weights.kg} kg / {payload_weights.lb} lb</td>
-                        </tr>
+                        
+                            {payload_weights.map((item, i) => (
+                                <tr key={i}>
+                                    <td className="table-column">PAYLOAD TO {item.id.toUpperCase()}</td>
+                                    <td className="table-column">{item.kg} kg / {item.lb} lb</td>
+                                </tr>
+                            ))}
+
+                        
                     </thead>
                 </table>
                 <RellaxWrapper speed={14}>
