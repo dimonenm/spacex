@@ -1,10 +1,11 @@
 import React from 'react';
+import { BrowserRouter, Route, /*Link*/ } from "react-router-dom";
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import Features from './components/Features/Features';
 import Footer from './components/Footer/Footer';
-// import Calendar from './components/Calendar/Calendar';
-// import Details from './components/Details/Details';
+import Calendar from './components/Calendar/Calendar';
+import Details from './components/Details/Details';
 import FetchData from './service/FetchData.js';
 
 import './style.css';
@@ -62,12 +63,26 @@ class App extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <Header rockets={this.state.rockets} cangeRocket={this.cangeRocket}/>
-        <Main rocket={this.state.rocket} />
-        {this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />}
-        {this.state.company && <Footer {...this.state.company} />}
-      </React.Fragment>
+      <BrowserRouter>
+        <Header rockets={this.state.rockets} cangeRocket={this.cangeRocket} />
+
+        <Route exact path='/'>
+          <Main rocket={this.state.rocket} />
+          {this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />}
+        </Route>
+
+        <Route exact path='/calendar'>
+          <Main />
+          <Calendar />
+        </Route>
+
+        <Route exact path='/details'>
+          <Main />
+          <Details />
+        </Route>
+
+          {this.state.company && <Footer {...this.state.company} />}
+      </BrowserRouter>
     );
   }
 }
