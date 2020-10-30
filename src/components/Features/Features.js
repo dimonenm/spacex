@@ -1,5 +1,6 @@
 import React from 'react';
 import RellaxWrapper from 'react-rellax-wrapper';
+import Main from '../Main/Main';
 import './features.css';
 
 // const Features = (props) => {
@@ -14,29 +15,28 @@ const Features = ({ name, height: { meters: hMeters, feet: hFeet }, diameter: { 
     }
 
     return (
-        <section className="features">
-            <h2 className="features-title">{name}<br />Overview
-    </h2>
-            <div className="overview">
+        <>
+            <Main rocket={name} />
+            <section className="features">
+                <h2 className="features-title">{name}<br />Overview</h2>
+                <div className="overview">
 
-                <table className="table">
-                    <caption className="table-title">
-                        Size
-        </caption>
-                    <thead>
-                        <tr>
-                            <td className="table-column">HEIGHT</td>
-                            <td className="table-column">{hMeters} m / {hFeet} ft</td>
-                        </tr>
-                        <tr>
-                            <td className="table-column">DIAMETER</td>
-                            <td className="table-column">{dMeters} m / {dFeet} ft</td>
-                        </tr>
-                        <tr>
-                            <td className="table-column">MASS</td>
-                            <td className="table-column">{massKg} kg / {massLb} lb</td>
-                        </tr>
-                        
+                    <table className="table">
+                        <caption className="table-title">Size</caption>
+                        <thead>
+                            <tr>
+                                <td className="table-column">HEIGHT</td>
+                                <td className="table-column">{hMeters} m / {hFeet} ft</td>
+                            </tr>
+                            <tr>
+                                <td className="table-column">DIAMETER</td>
+                                <td className="table-column">{dMeters} m / {dFeet} ft</td>
+                            </tr>
+                            <tr>
+                                <td className="table-column">MASS</td>
+                                <td className="table-column">{massKg} kg / {massLb} lb</td>
+                            </tr>
+
                             {payload_weights.map((item, i) => (
                                 <tr key={i}>
                                     <td className="table-column">PAYLOAD TO {item.id.toUpperCase()}</td>
@@ -44,22 +44,23 @@ const Features = ({ name, height: { meters: hMeters, feet: hFeet }, diameter: { 
                                 </tr>
                             ))}
 
-                        
-                    </thead>
-                </table>
-                <RellaxWrapper speed={14}>
-                    <img
-                        src={`./img/${rocketImages[name]}.png`}
-                        alt="rocket"
-                        className="rocket" />
-                </RellaxWrapper>
 
-                <article>
-                    <h3 className="features-subtitle">DESCRIPTION</h3>
-                    <p className="features-text">{description}</p>
-                </article>
-            </div>
-        </section>
+                        </thead>
+                    </table>
+                    <RellaxWrapper speed={14}>
+                        <img
+                            src={`./img/${rocketImages[name]}.png`}
+                            alt="rocket"
+                            className="rocket" />
+                    </RellaxWrapper>
+
+                    <article>
+                        <h3 className="features-subtitle">DESCRIPTION</h3>
+                        <p className="features-text">{description}</p>
+                    </article>
+                </div>
+            </section>
+        </>
     );
 }
 
