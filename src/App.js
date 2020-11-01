@@ -66,10 +66,7 @@ class App extends React.Component {
       <BrowserRouter>
         <Header rockets={this.state.rockets} cangeRocket={this.cangeRocket} />
 
-        <Route exact path='/'>
-          
-          {this.state.rocketFeatures && <Features {...this.state.rocketFeatures} />}
-        </Route>
+        <Route exact path='/' render={() => this.state.rocketFeatures && <Features {...this.state.rocketFeatures} /> }/>
 
         <Route exact path='/calendar' component={Calendar}/>
         <Route exact path='/details/:id' component={Details}/>

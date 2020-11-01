@@ -20,7 +20,6 @@ const Features = ({ name, height: { meters: hMeters, feet: hFeet }, diameter: { 
             <section className="features">
                 <h2 className="features-title">{name}<br />Overview</h2>
                 <div className="overview">
-
                     <table className="table">
                         <caption className="table-title">Size</caption>
                         <thead>
@@ -36,17 +35,15 @@ const Features = ({ name, height: { meters: hMeters, feet: hFeet }, diameter: { 
                                 <td className="table-column">MASS</td>
                                 <td className="table-column">{massKg} kg / {massLb} lb</td>
                             </tr>
-
                             {payload_weights.map((item, i) => (
                                 <tr key={i}>
                                     <td className="table-column">PAYLOAD TO {item.id.toUpperCase()}</td>
                                     <td className="table-column">{item.kg} kg / {item.lb} lb</td>
                                 </tr>
                             ))}
-
-
                         </thead>
                     </table>
+
                     <RellaxWrapper speed={14}>
                         <img
                             src={`./img/${rocketImages[name]}.png`}

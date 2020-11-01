@@ -6,6 +6,7 @@ import Youtube from 'react-youtube';
 import './details.css';
 
 const Details = (props) => {
+  console.log(props);
   
   const [launch, setLaunch] = useState(null);
 
